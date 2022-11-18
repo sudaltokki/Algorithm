@@ -37,7 +37,6 @@ int bfs(int x, int y, char color, bool RG) {
 int main(void) {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	queue<pair<int, int>> Q;
 
 	cin >> n;
 
