@@ -3,7 +3,6 @@ using namespace std;
 #define X first
 #define Y second
 int board[1001][1001];
-int vis[1001][1001];
 int n, m, day = 0;
 int dx[4] = { 1, 0, -1, 0 };
 int dy[4] = { 0 , 1, 0, -1 };
@@ -17,9 +16,8 @@ void bfs() {
             int nx = cur.X + dx[dir];
             int ny = cur.Y + dy[dir];
             if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-            if (vis[nx][ny] != 0 || board[nx][ny] != 0) continue;
+            if (board[nx][ny] != 0) continue;
             board[nx][ny] = 1;
-            vis[nx][ny] = vis[cur.X][cur.Y] + 1;
             Q.push({ nx, ny });
         }
         Q.pop();
