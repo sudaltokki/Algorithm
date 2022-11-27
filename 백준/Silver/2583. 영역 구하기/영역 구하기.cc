@@ -5,7 +5,7 @@ using namespace std;
 #define Y second
 
 int board[100][100];
-bool visitt[100][100];
+bool vis[100][100];
 int m, n, k;
 vector<int> v;
 
@@ -16,7 +16,7 @@ queue<pair<int, int>> Q;
 
 void bfs(int x, int y) {
     Q.push({ x, y });
-    visitt[x][y] = 1;
+    vis[x][y] = 1;
     int tmp = 1;
     while (!Q.empty()) {
         auto cur = Q.front();
@@ -24,8 +24,8 @@ void bfs(int x, int y) {
             int nx = cur.X + dx[dir];
             int ny = cur.Y + dy[dir];
             if (nx < 0 || nx >= m || ny < 0 || ny >= n ) continue;
-            if (board[nx][ny] != 0 || visitt[nx][ny]) continue;
-            visitt[nx][ny] = 1;
+            if (board[nx][ny] != 0 || vis[nx][ny]) continue;
+            vis[nx][ny] = 1;
             Q.push({nx, ny});
             tmp++;
         }
@@ -52,7 +52,7 @@ int main(void) {
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            if (board[i][j] == 0 && !visitt[i][j]) {
+            if (board[i][j] == 0 && !vis[i][j]) {
                 bfs(i, j);
             }
         }
